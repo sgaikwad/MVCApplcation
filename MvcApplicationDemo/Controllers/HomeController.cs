@@ -9,10 +9,22 @@ namespace MvcApplicationDemo.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string name)
         {
-            var restaurant = RestaurantData.GetRestaurants();
-            return View(restaurant);
+            var restaurants = RestaurantData.GetRestaurants();
+
+            var model = restaurants
+                .OrderByDescending(r => r.Id)
+                .Where(r => name == null || r.Name.StartsWith(name))
+                .Select(r => new Restaurant
+                {
+                    Id = r.Id,
+                    Name = r.Name,
+                    City = r.City,
+                    Country = r.Country
+                });
+
+            return View(model);
         }
 
         public ActionResult About()
@@ -35,10 +47,22 @@ namespace MvcApplicationDemo.Controllers
             return View();
         }
 
-        public ActionResult Search(string name)
-        {
+        //public ActionResult Search(string name)
+        //{
+        //    var restaurants = RestaurantData.GetRestaurants();
 
-            return Content("Employee");
-        }
+        //    var model = restaurants
+        //        .OrderByDescending(r => r.Id)
+        //        .Where(r => name == null || r.Name.StartsWith(name))
+        //        .Select(r => new Restaurant
+        //        {
+        //            Id = r.Id,
+        //            Name = r.Name,
+        //            City = r.City,
+        //            Country = r.Country
+        //        });
+
+        //    return View(model);
+        //}
     }
 }

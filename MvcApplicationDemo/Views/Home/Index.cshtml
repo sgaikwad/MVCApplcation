@@ -4,34 +4,40 @@
 @{
     ViewBag.Title = "Home";
 }
+<form method="GET">
+    <div class="container">
+        <div class="row">
+            <div class="form-group">
+                <div class="col-xs-4">
+                    <label for="ex3">Search</label>
+                    <input class="form-control" id="ex3" type="search" name="name">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+<div class="row-fluid">
+    <table class="table" style="margin-top: 50px">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+        </tr>
 
-<h2>Home</h2>
-
-
-<div>
-    <input id="search" placeholder="Search"/>
+        @foreach (var item in Model)
+        {
+            Html.RenderPartial("_PartialRestaurantView", item);
+        }
+    </table>
 
 </div>
-
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Country)
-        </th>
-        <th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        Html.RenderPartial("_PartialRestaurantView",item);
-    }
-</table>
-
-

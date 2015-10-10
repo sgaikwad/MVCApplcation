@@ -16,7 +16,7 @@ namespace MvcApplicationDemo
             bundles.Add(new ScriptBundle("~/bundles/bootstrapjs").Include(
                 "~/Scripts/bootstrap.min.js"));
 
-            bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include(
+            bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include("~/Content/Site.css",
                 "~/Content/bootstrap.min.css",
                 "~/Content/bootstrap-responsive.min.css"));
         }
