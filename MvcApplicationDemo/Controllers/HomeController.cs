@@ -1,4 +1,5 @@
-﻿using MvcApplicationDemo.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using MvcApplicationDemo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,34 @@ namespace MvcApplicationDemo.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(string name)
+        [NonNullableParameters]
+        public ActionResult Index(SearchModel searchModel)
         {
             var restaurants = RestaurantData.GetRestaurants();
 
-            var model = restaurants
-                .OrderByDescending(r => r.Id)
-                .Where(r => name == null || r.Name.StartsWith(name))
-                .Select(r => new Restaurant
-                {
-                    Id = r.Id,
-                    Name = r.Name,
-                    City = r.City,
-                    Country = r.Country
-                });
+            IEnumerable<Restaurant> model = null;
 
+            if (ModelState.IsValid)
+            {
+                model = restaurants
+                    .OrderByDescending(r => r.Id)
+                    .Where(
+                        r =>
+                            searchModel == null || searchModel.SearchTerm == null ||
+                            r.Name.StartsWith(searchModel.SearchTerm))
+                    .Select(r => new Restaurant
+                    {
+                        Id = r.Id,
+                        Name = r.Name,
+                        City = r.City,
+                        Country = r.Country
+                    });
+
+            }
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_PartialRestaurantView", model);
+            }
             return View(model);
         }
 

@@ -6,7 +6,8 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
@@ -44,16 +45,17 @@
             @Html.ValidationMessageFor(model => model.Rating)
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
+        <div class="container">
+            <div class="row-fluid">
+                <div class="row top-buffer">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+        </div>
     </fieldset>
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

@@ -47,3 +47,4 @@ E:\Study\DotNet\MVC\MvcApplicationDemo\MvcApplicationDemo\bin\DotNetOpenAuth.Ope
 E:\Study\DotNet\MVC\MvcApplicationDemo\MvcApplicationDemo\obj\Debug\MvcApplicationDemo.dll
 E:\Study\DotNet\MVC\MvcApplicationDemo\MvcApplicationDemo\obj\Debug\MvcApplicationDemo.pdb
 E:\Study\DotNet\MVC\MvcApplicationDemo\MvcApplicationDemo\obj\Debug\MvcApplicationDemo.csprojResolveAssemblyReference.cache
+E:\Study\DotNet\MVC\MvcApplicationDemo\MvcApplicationDemo\bin\Scripts\CustomScript.js

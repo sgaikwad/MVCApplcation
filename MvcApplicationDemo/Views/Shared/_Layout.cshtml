@@ -7,13 +7,19 @@
     @Styles.Render("~/Content/bootstrapcss")
 </head>
 <body>
+
+    <div class="page-header">
+        <h1>Header</h1>
+    </div>
+
+
     <div class="container-fluid">
-        <div class="row-fluid body">
+        <div class="row-fluid">
             <div class="span3">
-                <div class="well sidebar-nav">
+                <div class="well">
                     <ul class="nav nav-list">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Search", "Search", "Search")</li>
+                        @*<li>@Html.ActionLink("Search", "Search", "Search")</li>*@
                         <li>@Html.ActionLink("Reviews", "Index", "Reviews")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         <li>@Html.ActionLink("About Us", "About", "Home")</li>
@@ -22,7 +28,7 @@
             </div>
             <div class="span9">
                 @RenderSection("featured", false)
-                <div class="row-fluid logo">
+                <div class="row-fluid">
                     @RenderBody()
                 </div>
             </div>
@@ -31,5 +37,6 @@
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrapjs")
+    @Scripts.Render("~/bundles/customjs")
 </body>
 </html>

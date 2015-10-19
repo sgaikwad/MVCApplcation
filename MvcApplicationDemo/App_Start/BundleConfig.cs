@@ -19,6 +19,10 @@ namespace MvcApplicationDemo
             bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include("~/Content/Site.css",
                 "~/Content/bootstrap.min.css",
                 "~/Content/bootstrap-responsive.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/customjs").Include(
+           "~/Scripts/CustomScript.js"));
+
         }
     }
 }

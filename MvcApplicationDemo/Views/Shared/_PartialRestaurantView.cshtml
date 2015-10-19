@@ -1,15 +1,47 @@
-﻿@model MvcApplicationDemo.Models.Restaurant
-
-<tr>
-    <td>
-        @Html.DisplayFor(model => model.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(model => model.City)
-    </td>
-    <td>
-        @Html.DisplayFor(model => model.Country)
-    </td>
-</tr>
+﻿@using System.Diagnostics.Eventing.Reader
+@model  IEnumerable<MvcApplicationDemo.Models.Restaurant>
 
 
+
+@if (ViewData.ModelState.IsValid == false)
+{       
+    <div style="color:red;">
+        @ViewData.ModelState["SearchTerm"].Errors[0].ErrorMessage
+    </div>
+}
+@if (Model != null)
+{
+    <div class="row-fluid">
+        <table class="table" style="margin-top: 50px">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>
+                <th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.City
+                    </td>
+                    <td>
+                        @item.Country
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+}

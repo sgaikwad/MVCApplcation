@@ -1,43 +1,28 @@
 ﻿@model  IEnumerable<MvcApplicationDemo.Models.Restaurant>
 
-
 @{
     ViewBag.Title = "Home";
 }
-<form method="GET">
+<form>
     <div class="container">
         <div class="row">
             <div class="form-group">
                 <div class="col-xs-4">
                     <label for="ex3">Search</label>
-                    <input class="form-control" id="ex3" type="search" name="name">
+                    <input class="form-control" id="txtSearch" type="search" name="name">
                 </div>
             </div>
         </div>
-        <div class="row">
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+        <div class="row-fluid">
+            <div class="row top-buffer">
+                <button type="submit" id="btnSearch" class="btn btn-primary">Submit</button>
+            </div>
         </div>
+
     </div>
+    @Html.ValidationSummary(true)
 </form>
-<div class="row-fluid">
-    <table class="table" style="margin-top: 50px">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            Html.RenderPartial("_PartialRestaurantView", item);
-        }
-    </table>
-
+<div id="divRestaurantList">
+    @Html.Partial("_PartialRestaurantView", Model)
 </div>
